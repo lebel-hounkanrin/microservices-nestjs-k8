@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/apps/v1%40deployment": "file:///home/neil/microservices-nestjs-k8/infra/k8s/auth-depl.yaml"
+    }
+}
