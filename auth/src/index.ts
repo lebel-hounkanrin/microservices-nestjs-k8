@@ -5,6 +5,7 @@ import { signupRouter } from "./routes/signup";
 import { signoutRouter } from "./routes/signout";
 import { currentUserRouter } from "./routes/currenr-user";
 import { errorHandler } from "./middlewares/error.handler";
+import mongoose from "mongoose"
 
 const app = express();
 app.use(json());
@@ -15,6 +16,18 @@ app.use(currentUserRouter)
 app.use(errorHandler);
 
 
-app.listen(3000, ()=> {
-    console.log("auth app listening on port 3000")
-})
+const start = async () => {
+    try{
+        mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
+    } catch(err){
+        console.error("Couldn't connect to mongodb")
+    }
+
+    app.listen(3000, ()=> {
+        console.log("auth app listening on port 3000")
+    })
+}
+
+start();
+
+
